@@ -16,6 +16,27 @@ var isPalindrome = function (x) {
   }
 };
 
+// 121. Best Time to Buy and Sell Stock
+
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function (prices) {
+  let menorPreco = Infinity;
+  let maiorPreco = 0;
+
+  for (let i = 0; i < prices.length; i++) {
+    menorPreco = Math.min(prices[i], menorPreco);
+
+    var possivelLucro = prices[i] - menorPreco;
+
+    maiorPreco = Math.max(possivelLucro, maiorPreco);
+  }
+
+  return maiorPreco;
+};
+
 // 136. Single Number
 /**
  * @param {number[]} nums
@@ -36,6 +57,60 @@ var singleNumber = function (nums) {
       return key;
     }
   }
+};
+
+// 137. Single Number II
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function (nums) {
+  var numeros = {};
+
+  for (let num of nums) {
+    if (num in numeros) {
+      numeros[num]++
+    }
+    else {
+      numeros[num] = 1;
+    }
+  }
+
+  for (let unique in numeros) {
+    if (numeros[unique] === 1) {
+      return unique;
+    }
+  }
+};
+
+// 169. Majority Element
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var majorityElement = function (nums) {
+  var numbers = {};
+  var maiorContagem = 0;
+  var numeroMaisContado = 0;
+
+  for (let num of nums) {
+    if (num in numbers) {
+      numbers[num]++;
+    } else {
+      numbers[num] = 1;
+    }
+  };
+
+  for (key in numbers) {
+    if (numbers[key] > maiorContagem) {
+      maiorContagem = numbers[key];
+      numeroMaisContado = key;
+    }
+  }
+
+  return numeroMaisContado;
 };
 
 // 191. Number of 1 Bits
@@ -63,27 +138,4 @@ var hammingWeight = function (n) {
   };
 };
 
-// 137. Single Number II
-
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var singleNumber = function (nums) {
-  var numeros = {};
-
-  for (let num of nums) {
-    if (num in numeros) {
-      numeros[num]++
-    }
-    else {
-      numeros[num] = 1;
-    }
-  }
-
-  for (let unique in numeros) {
-    if (numeros[unique] === 1) {
-      return unique;
-    }
-  }
-};
+// 
