@@ -16,6 +16,23 @@ var isPalindrome = function (x) {
   }
 };
 
+// 53. Maximum Subarray
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubArray = function (nums) {
+  var maxAtual = nums[0];
+  var maxTotal = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    maxAtual = Math.max(nums[i], maxAtual + nums[i]);
+    maxTotal = Math.max(maxTotal, maxAtual);
+  };
+  return maxTotal;
+};
+
 // 121. Best Time to Buy and Sell Stock
 
 /**
@@ -35,6 +52,22 @@ var maxProfit = function (prices) {
   }
 
   return maiorPreco;
+};
+
+// 125. Valid Palindrome
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function (s) {
+  const cleanString = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  for (let i = 0; i < Math.floor(cleanString.length / 2); i++) {
+    if (cleanString[i] !== cleanString[cleanString.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
 };
 
 // 136. Single Number
@@ -138,4 +171,18 @@ var hammingWeight = function (n) {
   };
 };
 
-// 
+// 215. Kth Largest Element in an Array
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var findKthLargest = function (nums, k) {
+  const sortArray = nums.sort((a, b) => b - a);
+  for (let i = 0; i < sortArray.length; i++) {
+    if (i === k - 1) {
+      return sortArray[i];
+    }
+  };
+};
