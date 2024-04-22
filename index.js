@@ -16,6 +16,23 @@ var isPalindrome = function (x) {
   }
 };
 
+// 35. Search Insert Position
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var searchInsert = function (nums, target) {
+  for (let index = 0; index < nums.length; index++) {
+    if (nums[index] >= target) {
+      return index;
+    }
+  }
+
+  return nums.length;
+};
+
 // 53. Maximum Subarray
 
 /**
@@ -31,6 +48,26 @@ var maxSubArray = function (nums) {
     maxTotal = Math.max(maxTotal, maxAtual);
   };
   return maxTotal;
+};
+
+// 74. Search a 2D Matrix
+
+/**
+ * @param {number[][]} matrix
+ * @param {number} target
+ * @return {boolean}
+ */
+var searchMatrix = function (matrix, target) {
+  for (var i = 0; i < matrix.length; i++) {
+    var matrixInterna = matrix[i];
+
+    for (var j = 0; j < matrixInterna.length; j++) {
+      if (target === matrixInterna[j]) {
+        return true;
+      }
+    }
+  }
+  return false;
 };
 
 // 121. Best Time to Buy and Sell Stock
